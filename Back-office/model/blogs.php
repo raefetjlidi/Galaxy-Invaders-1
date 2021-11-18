@@ -59,13 +59,13 @@ class Blogs
     }
     
     //Constructor
-    function __construct($id_blog,$nom_blog,$categorie_blog,$date_blog,$nom_editeur)
+
+    function __construct($nom_blog,$categorie_blog,$nom_editeur, $contenu_blog)
     {
-    	$this->id_blog=$id_blog;
     	$this->nom_blog=$nom_blog;
     	$this->categorie_blog=$categorie_blog;
-    	$this->date_blog=$date_blog;
     	$this->nom_editeur=$nom_editeur;
+        $this->contenu_blog=$contenu_blog;
     }
   
 }
