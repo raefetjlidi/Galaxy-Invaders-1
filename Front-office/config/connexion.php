@@ -7,7 +7,7 @@ class Connexion
 
 $servername = "localhost";
 $username = "root";
-$password = "201JMT2093";
+$password = "";
 $dbname = "projet_web";
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username,
 $password);
