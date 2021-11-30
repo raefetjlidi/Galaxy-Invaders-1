@@ -11,10 +11,11 @@ if (isset($_POST["blog_id"]))
 
 $nom=$_POST['name'];
 $categorie=$_POST['categorie'];
+$image=$_POST['image'];
 $editeur=$_POST['editeur'];
 $contenu=$_POST['contenu'];
 
-$blog=new Blogs($nom,$categorie,$editeur,$contenu);
+$blog=new Blogs($nom,$categorie,$image,$editeur,$contenu);
 $blog->setIdBlog($id);
 
 

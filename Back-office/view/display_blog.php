@@ -76,6 +76,9 @@ $response = $crud->afficherblogs($crud->conn);
                             Content
                           </th>
                           <th>
+                            Image
+                          </th>
+                          <th>
                             Date
                           </th>
                           <th>
@@ -107,6 +110,9 @@ $response = $crud->afficherblogs($crud->conn);
                                 </td>
                                 <td>
                                 <?php echo $row['contenu_blog'] ?>
+                                </td>
+                                <td>
+                                <?php echo $row['image_blog'] ?>
                                 </td>
                                 <td>
                                 <?php echo $row['date_blog'] ?>

@@ -1,3 +1,13 @@
+<?php
+
+	include ('../controller/crudBlog.php');
+	include ('../model/blogs.php');
+	$crud = new crudBlog();
+	$responseS= $crud->recupererBlog($_GET['id'] ,$crud->conn);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +20,7 @@
 	<title>Single News</title>
 
 	<!-- favicon -->
-	<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
+	<link rel="shortcut icon" type="image/png" href="../assets/img/logo.png">
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
@@ -73,18 +83,22 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="single-article-section">
-						<div class="single-article-text">
-							<div class="single-artcile-bg"></div>
+					<?php 
+			            while($row = $responseS->fetch())
+			            {
+			            ?>
+					    <div class="single-article-text">
+							<div class="single-artcile-bg"> <img src="<?php echo $row["image_blog"] ?>"> </div>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+								<span class="date"><i class="fas fa-calendar"></i> <?php echo $row['date_blog'] ?> </span>
 							</p>
-							<h2>What is Astronomy</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint soluta, similique quidem fuga vel voluptates amet doloremque corrupti. Perferendis totam voluptates eius error fuga cupiditate dolorum? Adipisci mollitia quod labore aut natus nobis. Rerum perferendis, nobis hic adipisci vel inventore facilis rem illo, tenetur ipsa voluptate dolorem, cupiditate temporibus laudantium quidem recusandae expedita dicta cum eum. Quae laborum repellat a ut, voluptatum ipsa eum. Culpa fugiat minus laborum quia nam!</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, praesentium, dicta. Dolorum inventore molestias velit possimus, dolore labore aliquam aperiam architecto quo reprehenderit excepturi ipsum ipsam accusantium nobis ducimus laudantium.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum est aperiam voluptatum id cupiditate quae corporis ex. Molestias modi mollitia neque magni voluptatum, omnis repudiandae aliquam quae veniam error! Eligendi distinctio, ab eius iure atque ducimus id deleniti, vel alias sint similique perspiciatis saepe necessitatibus non eveniet, quo nisi soluta.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt beatae nemo quaerat, doloribus obcaecati odio!</p>
+							<h2> <?php echo $row['nom_blog'] ?> </h2>
+							<p> <?php echo $row['contenu_blog'] ?> </p>
 						</div>
+						<?php 
+						}
+						?>
 
 						<div class="comments-list-wrap">
 							<h3 class="comment-count-title">3 Comments</h3>
@@ -122,12 +136,11 @@
 						<div class="comment-template">
 							<h4>Leave a comment</h4>
 							<p>If you have a comment dont feel hesitate to send us your opinion.</p>
-							<form action="index_2.php">
-								<p>
+							<form action="../helpers/ajouterComment.php" method="post">
+								<!--<p>
 									<input type="text" placeholder="Your Name">
-									<input type="email" placeholder="Your Email">
-								</p>
-								<p><textarea name="comment" id="comment" cols="30" rows="10" placeholder="Your Message"></textarea></p>
+								</p> -->
+								<p><textarea name="contenu" id="contenu" cols="30" rows="10" placeholder="Your Message"></textarea></p>
 								<p><input type="submit" value="Submit"></p>
 							</form>
 						</div>
@@ -163,6 +176,7 @@
 								<li><a href="single-news.php">ISS</a></li>
 								<li><a href="single-news.php">Space Tourism</a></li>
 								<li><a href="single-news.php">General Information</a></li>
+								<li><a href="single-news.php">lates nwzs 
 								<li><a href="single-news.php">Latest news</a></li>
 							</ul>
 						</div>

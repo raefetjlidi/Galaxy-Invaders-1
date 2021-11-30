@@ -5,8 +5,10 @@ class Blogs
 	private $nom_blog;
     private $contenu_blog;
 	private $categorie_blog;
+    private $image_blog;
     private $date_blog;
     private $nom_editeur;
+
     
     //Getters
     function getIdBlog()
@@ -23,6 +25,10 @@ class Blogs
     function getCategorieBlog()
     {
     	return $this->categorie_blog;
+    }
+    function getImageBlog()
+    {
+    	return $this->image_blog;
     }
     function getDateBlog()
     {
@@ -49,6 +55,10 @@ class Blogs
     {
     	$this->categorie_blog=$categorie_blog;
     }
+    function setimageBlog($image_blog)
+    {
+    	$this->image_blog=$image_blog;
+    }
     function setDateBlog($date_blog)
     {
     	$this->date_blog=$date_blog;
@@ -60,10 +70,11 @@ class Blogs
     
     //Constructor
 
-    function __construct($nom_blog,$categorie_blog,$nom_editeur, $contenu_blog)
+    function __construct($nom_blog,$categorie_blog,$image_blog,$nom_editeur, $contenu_blog)
     {
     	$this->nom_blog=$nom_blog;
     	$this->categorie_blog=$categorie_blog;
+    	$this->image_blog=$image_blog;
     	$this->nom_editeur=$nom_editeur;
         $this->contenu_blog=$contenu_blog;
     }

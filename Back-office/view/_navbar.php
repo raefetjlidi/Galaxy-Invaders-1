@@ -7,7 +7,7 @@
         </div>
         <div>
           <a class="navbar-brand brand-logo" href="index.php">
-            <img src="../assets/images/logo.svg" alt="logo" />
+            <img src="../assets/images/logo.png" alt="logo" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.php">
             <img src="../assets/images/logo-mini.svg" alt="logo" />

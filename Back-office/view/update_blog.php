@@ -7,7 +7,7 @@ $cr=new crudBlog();
 $response = $cr->recupererBlog($_POST['id'], $cr->conn);
 
 while ($row = $response->fetch()) {
-    $blog=new Blogs($row['nom_blog'],$row['categorie_blog'],$row['nom_editeur'],$row['contenu_blog']);
+    $blog=new Blogs($row['nom_blog'],$row['categorie_blog'],$row['image_blog'],$row['nom_editeur'],$row['contenu_blog']);
     $blog->setIdBlog($row['id_blog']);
     $blog->setContenuBlog($row['contenu_blog']);
  }
@@ -80,6 +80,16 @@ while ($row = $response->fetch()) {
                     <div class="form-group">
                       <label for="exampleInputEmail3">Categorie</label> <!-- zid categorie -->
                       <input type="text" class="form-control"  name="categorie" value=<?php echo $blog->getCategorieBlog(); ?>  placeholder="Categorie">
+                    </div>
+                    <div class="form-group">
+                      <label>Image</label>
+                      <input type="file" name="image" class="file-upload-default" value= <?php echo $blog->getImageBlog(); ?> placeholder="Image">
+                      <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <span class="input-group-append">
+                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                        </span>
+                      </div>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword4">Editeur</label>o

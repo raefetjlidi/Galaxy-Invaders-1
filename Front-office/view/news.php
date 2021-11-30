@@ -1,3 +1,12 @@
+<?php
+    include ('../model/blogs.php');
+	include ('../controller/crudBlog.php');
+	$crud = new crudBlog();
+	$response = $crud->afficherblogs($crud->conn);
+	
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +39,8 @@
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="../assets/css/responsive.css">
+
+	
 
 </head>
 <body>
@@ -71,90 +82,32 @@
 	<div class="latest-news mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-6">
+			
+			<?php 
+			while($row = $response->fetch())
+			{
+			?>
+             <div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
-						<a href="single-news.php"><div class="latest-news-bg news-bg-1"></div></a>
+						<a href="single-news.php?id=<?php echo $row["id_blog"] ?>" ><div class="latest-news-bg "> <img class="latest-news-bg " src=<?php echo $row["image_blog"] ?> > </div></a> <!-- afficher image -->
 						<div class="news-text-box">
-							<h3><a href="single-news.php">Nasa program for the upcoming year.</a></h3>
+							<h3><a href="single-news.php?id=<?php echo $row["id_blog"] ?>"> <?php echo $row['nom_blog'] ?>   </a></h3>
 							<p class="blog-meta">
 								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+								<span class="date"><i class="fas fa-calendar"></i> <?php echo $row['date_blog'] ?>  </span>
 							</p>
-							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
-							<a href="single-news.php" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+							<p class="excerpt"> <?php echo $row['contenu_blog'] ?> </p>
+							<a href="single-news.php?id=<?php echo $row["id_blog"] ?>" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.php"><div class="latest-news-bg news-bg-2"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">SpaceX latest achievement.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
-							<a href="single-news.php" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.php"><div class="latest-news-bg news-bg-3"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">What is Astronomy.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
-							<a href="single-news.php" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.php"><div class="latest-news-bg news-bg-4"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">Mars latest discovery</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
-							<a href="single-news.php" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.php"><div class="latest-news-bg news-bg-5"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">International Space Station</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
-							<a href="single-news.php" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.php"><div class="latest-news-bg news-bg-6"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.php">Did Nasa really land on the moon</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2018</span>
-							</p>
-							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
-							<a href="single-news.php" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
+            <?php
+			}
+			
+			
+			?>
+			
+				
 			</div>
 
 			<div class="row">
