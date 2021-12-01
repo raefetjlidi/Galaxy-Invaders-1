@@ -18,16 +18,16 @@ $blog=new Blogs($nom,$categorie,$image,$editeur,$contenu);
 
 if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) 
   {
-      if (file_exists($target_file))
-      {
-          echo "Sorry, file already exists. <br>";
-          $uploadOk = 0;
-      }
-      else 
-      {
+     // if (file_exists($target_file)) 
+      // {
+        //  echo "Sorry, file already exists. <br>";
+        //  $uploadOk = 0;
+     // }
+     // else 
+      //{
           echo "The file has been uploaded. <br>";
           $uploadOk = 1;
-      }
+     // } 
   } 
 else 
   {
@@ -45,9 +45,9 @@ else
     echo 'ERROR';
 }
 
-
-
-
 ?>
+
+
+
 
 
