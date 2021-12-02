@@ -1,9 +1,17 @@
 <?php
-
+    //Blogs
 	include ('../controller/crudBlog.php');
 	include ('../model/blogs.php');
 	$crud = new crudBlog();
 	$responseS= $crud->recupererBlog($_GET['id'] ,$crud->conn);
+
+	//Comments
+	include ('../controller/crudComment.php');
+	include ('../model/comments.php');
+	$crudC= new crudComment();
+	$responseC= $crudC->afficherComment($crudC->conn);
+	// $nbr_comment = $crudC->nb_comment($crudC->conn);
+
 ?>
 
 
@@ -96,22 +104,29 @@
 							<h2> <?php echo $row['nom_blog'] ?> </h2>
 							<p> <?php echo $row['contenu_blog'] ?> </p>
 						</div>
+
 						<?php 
 						}
 						?>
-
-						<div class="comments-list-wrap">
-							<h3 class="comment-count-title">3 Comments</h3>
+                        <div class="comments-list-wrap">
+                           <h3 class="comment-count-title"> <!-- <?php echo $nbr_comment  ?> --> "N" Comments</h3>
+					    </div>   
+                           <?php
+						    while($rowC= $responseC->fetch())
+						    {
+					        ?>
+						
+							
 							<div class="comment-list">
 								<div class="single-comment-body">
 									<div class="comment-user-avater">
 										<img src="../assets/img/avaters/avatar1.png" alt="">
 									</div>
 									<div class="comment-text-body">
-										<h4>Jenny Joe <span class="comment-date">Aprl 26, 2020</span> <a href="#">reply</a></h4>
-										<p>Nunc risus ex, tempus quis purus ac, tempor consequat ex. Vivamus sem magna, maximus at est id, maximus aliquet nunc. Suspendisse lacinia velit a eros porttitor, in interdum ante faucibus Suspendisse lacinia velit a eros porttitor, in interdum ante faucibus.</p>
+										<h4>User name <span class="comment-date"> <?php echo $rowC['date_commentaire'] ?> </span> <a href="#">reply</a></h4>
+										<p> <?php echo $rowC['contenu_commentaire'] ?> </p>
 									</div>
-									<div class="single-comment-body child">
+									<!--<div class="single-comment-body child">
 										<div class="comment-user-avater">
 											<img src="../assets/img/avaters/avatar3.png" alt="">
 										</div>
@@ -119,23 +134,17 @@
 											<h4>Simon Soe <span class="comment-date">Aprl 27, 2020</span> <a href="#">reply</a></h4>
 											<p>Nunc risus ex, tempus quis purus ac, tempor consequat ex. Vivamus sem magna, maximus at est id, maximus aliquet nunc. Suspendisse lacinia velit a eros porttitor, in interdum ante faucibus.</p>
 										</div>
-									</div>
-								</div>
-								<div class="single-comment-body">
-									<div class="comment-user-avater">
-										<img src="../assets/img/avaters/avatar2.png" alt="">
-									</div>
-									<div class="comment-text-body">
-										<h4>Addy Aoe <span class="comment-date">May 12, 2020</span> <a href="#">reply</a></h4>
-										<p>Nunc risus ex, tempus quis purus ac, tempor consequat ex. Vivamus sem magna, maximus at est id, maximus aliquet nunc. Suspendisse lacinia velit a eros porttitor, in interdum ante faucibus Suspendisse lacinia velit a eros porttitor, in interdum ante faucibus.</p>
-									</div>
+									</div> -->
 								</div>
 							</div>
-						</div>
+						
+						<?php 
+					    } 
+                        ?>
 
 						<div class="comment-template">
 							<h4>Leave a comment</h4>
-							<p>If you have a comment dont feel hesitate to send us your opinion.</p>
+							<p>If you have a comment, don't hesitate to send us your opinion.</p>
 							<form action="../helpers/ajouterComment.php" method="post">
 								<!--<p>
 									<input type="text" placeholder="Your Name">

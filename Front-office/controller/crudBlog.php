@@ -5,7 +5,7 @@ class crudBlog
 	public $conn;
 	function __construct()
 	{
-		include ('../config/connexion.php');
+		include_once ('../config/connexion.php');
         $conf= new Connexion();
         $this->conn=$conf->cnx;
 	}

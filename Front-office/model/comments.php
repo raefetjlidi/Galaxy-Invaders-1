@@ -2,7 +2,7 @@
 class Comments
 {
     private $id_commentaire;
-    private $date_commentaire;
+    private $date_commentaire;  
     private $contenu_commentaire;
     private $id_blog;
 
@@ -17,7 +17,7 @@ class Comments
     }
     function getContenuComment()
     {
-        return $this->$contenu_commentaire;
+        return $this->contenu_commentaire;
     }
     function getIdBlog()
     {
@@ -25,22 +25,22 @@ class Comments
     }
 
     //Setters
-    function setIdComment()
+    function setIdComment($id_commentaire)
     {
         $this->id_commentaire=$id_commentaire;
     }
-    function setDateComment()
+    function setDateComment($date_commentaire)
     {
         $this->date_commentaire=$date_commentaire;
     }
-    function setContenuComment()
+    function setContenuComment($contenu_commentaire)
     {
         $this->contenu_commentaire=$contenu_commentaire;
     }
-    function setIdBlog()
+    function setIdBlog($id_blog)
     {
         $this->id_blog=$id_blog;
-    }
+   }
 
     //Constructor
     function __construct($id_commentaire,$date_commentaire,$contenu_commentaire,$id_blog)
