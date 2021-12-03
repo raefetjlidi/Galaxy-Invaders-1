@@ -9,11 +9,11 @@ class Comments
     //Getters
     function getIdComment()
     {
-        return $this->$id_commentaire;
+        return $this->id_commentaire;
     }
     function getDateComment()
     {
-        return $this->$date_commentaire;
+        return $this->date_commentaire;
     }
     function getContenuComment()
     {
@@ -21,7 +21,7 @@ class Comments
     }
     function getIdBlog()
     {
-        return $this->$id_blog;
+        return $this->id_blog;
     }
 
     //Setters
@@ -43,12 +43,9 @@ class Comments
    }
 
     //Constructor
-    function __construct($id_commentaire,$date_commentaire,$contenu_commentaire,$id_blog)
+    function __construct($contenu_commentaire)
     {
-        $this->id_commentaire=$id_commentaire;
-        $this->date_commentaire=$date_commentaire;
         $this->contenu_commentaire=$contenu_commentaire;
-        $this->id_blog=$id_blog;
     }
 }
 ?>

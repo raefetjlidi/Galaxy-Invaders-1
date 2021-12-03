@@ -36,6 +36,33 @@ class crudComment
     //}
 
     
+    function supprimerComment($id,$con)
+    {
+	$sql = "DELETE commentaires 
+	        FROM commentaires 
+			WHERE (id_commentaire='$id')";
+	$con->exec($sql);
+    }
+
+
+    function modifierComment($comment,$con)
+	{	
+		$id = $comment->getIdComment();
+		
+		$contenu = $comment->getContenuComment();
+		
+
+		$sql = "UPDATE commentaires SET contenu_commentaire='$contenu' WHERE (id_commentaire=$id)";
+		$con->exec($sql);
+	}
+
+    function recupererComment($id ,$con)
+    {
+        $sql = "SELECT * FROM commentaires where id_commentaire=$id";
+        $reponseS = $con->query($sql);
+        return $reponseS;
+    } 
+
     
 }
 ?>

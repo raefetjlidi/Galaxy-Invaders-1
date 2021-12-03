@@ -123,7 +123,10 @@
 										<img src="../assets/img/avaters/avatar1.png" alt="">
 									</div>
 									<div class="comment-text-body">
-										<h4>User name <span class="comment-date"> <?php echo $rowC['date_commentaire'] ?> </span> <a href="#">reply</a></h4>
+										<h4>User name <span class="comment-date"> <?php echo $rowC['date_commentaire'] ?> </span>  <a href="#">reply</a>  
+										<a href="../helpers/supprimerComment.php?idC=<?php echo $rowC['id_commentaire'] ?>">Delete</a> 
+									    <a href="update_comment.php?idC=<?php echo $rowC['id_commentaire'] ?>">Edit</a>
+									    </h4>
 										<p> <?php echo $rowC['contenu_commentaire'] ?> </p>
 									</div>
 									<!--<div class="single-comment-body child">
