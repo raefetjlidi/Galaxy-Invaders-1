@@ -5,12 +5,24 @@
 	$crud = new crudBlog();
 	$responseS= $crud->recupererBlog($_GET['id'] ,$crud->conn);
 
+	// Recent Posts
+	
+	$crudRP = new crudBlog();
+	$responseRP = $crudRP->afficherRecent($crud->conn);
+
 	//Comments
 	include ('../controller/crudComment.php');
 	include ('../model/comments.php');
 	$crudC= new crudComment();
 	$responseC= $crudC->afficherComment($crudC->conn);
 	// $nbr_comment = $crudC->nb_comment($crudC->conn);
+
+
+	//Categorie
+	$crudCat= new crudBlog();
+	$responseCateg= $crud->recupererBlog($_GET['id'] ,$crud->conn);
+
+	
 
 ?>
 
@@ -153,6 +165,7 @@
 									<input type="text" placeholder="Your Name">
 								</p> -->
 								<p><textarea name="contenu" id="contenu" cols="30" rows="10" placeholder="Your Message"></textarea></p>
+								<input hidden name="idblog" id="idblog" value="<?php $_GET['id']; ?>">
 								<p><input type="submit" value="Submit"></p>
 							</form>
 						</div>
@@ -162,35 +175,30 @@
 					<div class="sidebar-section">
 						<div class="recent-posts">
 							<h4>Recent Posts</h4>
+							<?php 
+							while($rowRP= $responseRP->fetch())
+							{
+							?>
 							<ul>
-								<li><a href="single-news.php">Nasa program for the upcoming year.</a></li>
-								<li><a href="single-news.php">SpaceX latest achievement.</a></li>
-								<li><a href="single-news.php">Mars latest discovery</a></li>
-								<li><a href="single-news.php">International Space Station</a></li>
-								<li><a href="single-news.php">Did Nasa really land on the moon</a></li>
+								<li><a href="single-news.php?id=<?php echo $rowRP["id_blog"] ?>"> <?php echo $rowRP['nom_blog'] ?> .</a></li>
 							</ul>
+							<?php
+							}
+							?>
 						</div>
-						<div class="archive-posts">
-							<h4>Archive Posts</h4>
-							<ul>
-								<li><a href="single-news.php">JAN 2019 (5)</a></li>
-								<li><a href="single-news.php">FEB 2019 (3)</a></li>
-								<li><a href="single-news.php">MAY 2019 (4)</a></li>
-								<li><a href="single-news.php">SEP 2019 (4)</a></li>
-								<li><a href="single-news.php">DEC 2019 (3)</a></li>
-							</ul>
-						</div>
+
 						<div class="tag-section">
 							<h4>Tags</h4>
+							<?php
+							while($rowCateg = $responseCateg->fetch())
+							{
+							?>
 							<ul>
-								<li><a href="single-news.php">Nasa</a></li>
-								<li><a href="single-news.php">SpaceX</a></li>
-								<li><a href="single-news.php">ISS</a></li>
-								<li><a href="single-news.php">Space Tourism</a></li>
-								<li><a href="single-news.php">General Information</a></li>
-								<li><a href="single-news.php">lates nwzs 
-								<li><a href="single-news.php">Latest news</a></li>
+								<li><a href="categorie.php?categ= <?php echo $rowCateg['categorie_blog'] ?>"> <?php echo $rowCateg['categorie_blog']  ?></a></li>
 							</ul>
+							<?php 
+							}
+							?>
 						</div>
 					</div>
 				</div>

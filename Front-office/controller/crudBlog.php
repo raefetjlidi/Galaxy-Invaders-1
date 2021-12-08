@@ -28,7 +28,20 @@ return $reponse;
 }
 
 
-		
+function afficherRecent($con)
+{
+   $sql = "SELECT * FROM blogs ORDER BY id_blog DESC LIMIT 3"; 
+$reponse = $con->query($sql);
+return $reponse;
+}		
+
+function recupererCategorie($categorie,$con)
+{
+
+   $sql = "SELECT * FROM blogs where categorie_blog = '$categorie'"; // Ki nhot manuellement tekhdem 
+   $reponse = $con->query($sql);
+   return $reponse;
+}
 
 }
 

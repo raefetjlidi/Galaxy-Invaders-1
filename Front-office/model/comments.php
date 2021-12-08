@@ -4,7 +4,8 @@ class Comments
     private $id_commentaire;
     private $date_commentaire;  
     private $contenu_commentaire;
-    private $id_blog;
+    private $blogs;
+    
 
     //Getters
     function getIdComment()
@@ -19,10 +20,12 @@ class Comments
     {
         return $this->contenu_commentaire;
     }
-    function getIdBlog()
+    function getBlog()
     {
-        return $this->id_blog;
+        return $this->blogs;
     }
+    
+    
 
     //Setters
     function setIdComment($id_commentaire)
@@ -37,15 +40,13 @@ class Comments
     {
         $this->contenu_commentaire=$contenu_commentaire;
     }
-    function setIdBlog($id_blog)
-    {
-        $this->id_blog=$id_blog;
-   }
+    
 
     //Constructor
-    function __construct($contenu_commentaire)
+    function __construct($contenu_commentaire,$blogs)
     {
         $this->contenu_commentaire=$contenu_commentaire;
+        $this->blogs=$blogs;
     }
 }
 ?>

@@ -12,10 +12,10 @@ class crudComment
     function ajouterComment($comment,$con)
     {
         $contenu_comment=$comment->getContenuComment();
-        //$id_blog=$comment->getIdBlog();
+        $id_blog=$comment->getBlog();
 
-        $sql= "INSERT INTO commentaires (contenu_commentaire,id_blog) 
-        VALUES ('$contenu_comment',1)";
+        $sql= "INSERT INTO commentaires (contenu_commentaire,blogs) 
+        VALUES ('$contenu_comment','$id_blog')"; // ID-BLOG ===> Yelzemni naadi id-blog parametre w naamlelha insert into
 
         $con->exec($sql);
     }
