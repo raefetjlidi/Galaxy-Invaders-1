@@ -21,19 +21,22 @@ class crudComment
     }
 
 
-    function afficherComment($con)
+    function afficherComment($id, $con)
     {
-        $sql= "SELECT * FROM commentaires";
+        $sql= "SELECT * FROM commentaires  where blogs='$id'";
         $reponseC= $con->query($sql);
         return $reponseC;
     }
 
-   // function nb_comment($con)
-    //{
-     //   $sql= "SELECT count(*) FROM commentaires";
-      //  $nbr_comment = $con->query($sql);
-      //  return $nbr_comment;
-    //}
+    function nb_comment($id,$con)
+    {
+        $sql= "SELECT count(*)  AS nbc FROM commentaires where blogs='$id'";
+        $nbr_comment = $con->query($sql);
+        $fetch = $nbr_comment->fetch(PDO::FETCH_OBJ);
+        $nbr_comment = $fetch->nbc;
+        return $nbr_comment;
+
+    }
 
     
     function supprimerComment($id,$con)

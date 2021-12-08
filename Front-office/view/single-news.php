@@ -4,9 +4,9 @@
 	include ('../model/blogs.php');
 	$crud = new crudBlog();
 	$responseS= $crud->recupererBlog($_GET['id'] ,$crud->conn);
-
-	// Recent Posts
+	$id=$_GET['id'];
 	
+	// Recent Posts
 	$crudRP = new crudBlog();
 	$responseRP = $crudRP->afficherRecent($crud->conn);
 
@@ -14,16 +14,14 @@
 	include ('../controller/crudComment.php');
 	include ('../model/comments.php');
 	$crudC= new crudComment();
-	$responseC= $crudC->afficherComment($crudC->conn);
-	// $nbr_comment = $crudC->nb_comment($crudC->conn);
+	$responseC= $crudC->afficherComment($id, $crudC->conn);
+	
+	 $nbr_comment = $crudC->nb_comment($id,$crudC->conn);
 
 
 	//Categorie
 	$crudCat= new crudBlog();
 	$responseCateg= $crud->recupererBlog($_GET['id'] ,$crud->conn);
-
-	
-
 ?>
 
 
@@ -121,7 +119,9 @@
 						}
 						?>
                         <div class="comments-list-wrap">
-                           <h3 class="comment-count-title"> <!-- <?php echo $nbr_comment  ?> --> "N" Comments</h3>
+                           <h3 class="comment-count-title">
+							   
+						<?php echo $nbr_comment ?>  Comments</h3>
 					    </div>   
                            <?php
 						    while($rowC= $responseC->fetch())
@@ -136,7 +136,13 @@
 									</div>
 									<div class="comment-text-body">
 										<h4>User name <span class="comment-date"> <?php echo $rowC['date_commentaire'] ?> </span>  <a href="#">reply</a>  
-										<a href="../helpers/supprimerComment.php?idC=<?php echo $rowC['id_commentaire'] ?>">Delete</a> 
+							
+								<form method="POST" action="../helpers/supprimerComment.">
+									<input type="submit" value="delete" style="background-color:none;">Delete</input>
+									<input type="hidden" value="<?PHP echo $rowC['id_commentaire']; ?>" name="idc" >
+									<input type="hidden" name="idblog" id="idblog" value="<?php echo $id ?>">					
+								</form>
+								
 									    <a href="update_comment.php?idC=<?php echo $rowC['id_commentaire'] ?>">Edit</a>
 									    </h4>
 										<p> <?php echo $rowC['contenu_commentaire'] ?> </p>
@@ -165,9 +171,10 @@
 									<input type="text" placeholder="Your Name">
 								</p> -->
 								<p><textarea name="contenu" id="contenu" cols="30" rows="10" placeholder="Your Message"></textarea></p>
-								<input hidden name="idblog" id="idblog" value="<?php $_GET['id']; ?>">
+								<input type="hidden" name="idblog" id="idblog" value="<?php echo $id ?>">					
 								<p><input type="submit" value="Submit"></p>
 							</form>
+
 						</div>
 					</div>
 				</div>
@@ -188,7 +195,7 @@
 						</div>
 
 						<div class="tag-section">
-							<h4>Tags</h4>
+							<h4>Categorie</h4>
 							<?php
 							while($rowCateg = $responseCateg->fetch())
 							{

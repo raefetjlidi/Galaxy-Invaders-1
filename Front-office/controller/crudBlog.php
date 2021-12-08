@@ -43,6 +43,9 @@ function recupererCategorie($categorie,$con)
    return $reponse;
 }
 
+
+
+
 }
 
 ?>
