@@ -137,16 +137,18 @@
 									<div class="comment-text-body">
 										<h4>User name <span class="comment-date"> <?php echo $rowC['date_commentaire'] ?> </span>  <a href="#">reply</a>  
 							
-								<form method="POST" action="../helpers/supprimerComment.php">
-									<input type="submit" value="delete" style="background-color:transparent; "></input>
-									<input type="hidden" value="<?PHP echo $rowC['id_commentaire']; ?>" name="idc" >
-									<input type="hidden" name="idblog" id="idblog" value="<?php echo $id ?>">					
-								</form>
+								        <form method="POST" action="../helpers/supprimerComment.php">
+											<input type="submit" value="delete" style="background-color:transparent; "></input>
+									        <input type="hidden" value="<?PHP echo $rowC['id_commentaire']; ?>" name="idc" >
+									        <input type="hidden" name="idblog" id="idblog" value="<?php echo $id ?>">
+											<!-- <a href="update_comment.php?idC=<?php echo $rowC['id_commentaire'] ?>">DELETE</a> -->					
+								        </form>
+
 								        <form method="POST" action="update_comment.php" >
 											<input type="submit" value="EDIT" style="background-color:transparent;"></input>
 									        <input type="hidden" value="<?PHP echo $rowC['id_commentaire']; ?>" name="idC" id="idC" >
 									        <input type="hidden" name="idblog" id="idblog" value="<?php echo $id ?>">
-                                            <!-- <a href="update_comment.php?idC=<?php echo $rowC['id_commentaire'] ?>">Edit</a> -->
+                                            <!-- <a href="update_comment.php?idC=<?php echo $rowC['id_commentaire'] ?>">EDIT</a> -->
 										</form>
 									    
 
@@ -208,7 +210,14 @@
 							{
 							?>
 							<ul>
-								<li><a href="categorie.php?categ= <?php echo $rowCateg['categorie_blog'] ?>"> <?php echo $rowCateg['categorie_blog']  ?></a></li>
+								<!-- <li><a href="categorie.php?categ= <?php echo $rowCateg['categorie_blog'] ?>"> <?php echo $rowCateg['categorie_blog']  ?></a></li> -->
+
+								<form method="POST" action="categorie.php">
+									<li>
+									<input type="submit" name="categ" value="<?php echo $rowCateg['categorie_blog']  ?>" style="background-color:transparent; "></input>
+
+									</li>
+								</form>
 							</ul>
 							<?php 
 							}

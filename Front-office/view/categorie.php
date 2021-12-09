@@ -3,7 +3,8 @@
     include ('../controller/crudBlog.php');
     include ('../model/blogs.php');
 	$crudCateg= new crudBlog();
-	$responseCateg= $crudCateg->recupererCategorie($_GET['categ'],$crudCateg->conn);
+	$responseCateg= $crudCateg->recupererCategorie($_POST['categ'],$crudCateg->conn);
+	
 ?>
 
 
@@ -71,7 +72,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<p>Categorie: </p>
-						<h1><?php echo $_GET['categ']; ?></h1>
+						<h1><?php echo $_POST['categ']; ?></h1>
 					</div>
 				</div>
 			</div>

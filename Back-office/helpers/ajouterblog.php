@@ -38,7 +38,13 @@ else
 if ($uploadOk==1)
 {
     $cr->ajouterBlog($blog,$cr->conn);
-    echo 'ADDED SUCCESSFULLY!';
+    ?>
+    <script type="text/javascript">
+                alert('ADDED SUCCESSFULLY !');
+    </script>
+    <?php 
+    header('Location: ../view/add_blog.php');
+    
 }
 else
 {
