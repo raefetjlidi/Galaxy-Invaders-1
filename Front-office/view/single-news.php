@@ -137,13 +137,20 @@
 									<div class="comment-text-body">
 										<h4>User name <span class="comment-date"> <?php echo $rowC['date_commentaire'] ?> </span>  <a href="#">reply</a>  
 							
-								<form method="POST" action="../helpers/supprimerComment.">
-									<input type="submit" value="delete" style="background-color:none;">Delete</input>
+								<form method="POST" action="../helpers/supprimerComment.php">
+									<input type="submit" value="delete" style="background-color:none;"></input>
 									<input type="hidden" value="<?PHP echo $rowC['id_commentaire']; ?>" name="idc" >
 									<input type="hidden" name="idblog" id="idblog" value="<?php echo $id ?>">					
 								</form>
-								
-									    <a href="update_comment.php?idC=<?php echo $rowC['id_commentaire'] ?>">Edit</a>
+								        <form method="POST" action="update_comment.php" >
+											<input type="submit" value="EDIT" style="background-color:none;"></input>
+									        <input type="hidden" value="<?PHP echo $rowC['id_commentaire']; ?>" name="idC" id="idC" >
+									        <input type="hidden" name="idblog" id="idblog" value="<?php echo $id ?>">
+                                            <!-- <a href="update_comment.php?idC=<?php echo $rowC['id_commentaire'] ?>">Edit</a> -->
+										</form>
+									    
+
+
 									    </h4>
 										<p> <?php echo $rowC['contenu_commentaire'] ?> </p>
 									</div>

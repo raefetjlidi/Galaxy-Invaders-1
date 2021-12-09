@@ -4,10 +4,11 @@ include ('../controller/crudComment.php');
 include ('../model/comments.php');
 $Cr=new crudComment();
 
-$responseC = $Cr->recupererComment($_GET['idC'], $Cr->conn);
+$responseC = $Cr->recupererComment($_POST['idC'], $Cr->conn);
+$id_blog=$_POST['idblog'];
 
 while ($row = $responseC->fetch()) {
-    $comment=new comments($row['contenu_commentaire']);
+    $comment=new comments($row['contenu_commentaire'],$id_blog);
     $comment->setIdComment($row['id_commentaire']);
     $comment->setContenuComment($row['contenu_commentaire']);
  }
@@ -97,7 +98,9 @@ while ($row = $responseC->fetch()) {
 								<!--<p>
 									<input type="text" placeholder="Your Name">
 								</p> -->
-                                <input type="text" class="form-control" name="blog_id" value=<?php echo $comment->getIdComment(); ?> hidden >
+                                <input type="text" class="form-control" name="comment_id" value=<?php echo $comment->getIdComment(); ?> hidden >
+                                <input type="text" class="form-control" name="blog_id" value=<?php echo $comment->getBlog(); ?> hidden >
+				
 								<p><textarea name="contenu" id="contenu" cols="30" rows="10" placeholder="Your Message"> <?php echo $comment->getContenuComment(); ?> </textarea></p>
 								<p><input type="submit" value="Submit"></p>
 							</form>
