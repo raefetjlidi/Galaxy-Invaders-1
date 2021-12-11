@@ -222,6 +222,15 @@
 	<script src="../assets/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="../assets/js/main.js"></script>
+	<script src="../assets/js/dark.js"> </script>
+	<script>
+      new Darkmode({
+        bottom: '32px',
+        right: '32px',
+        time: '0.5s',
+        label: '🌓'
+      }).showWidget();
+    </script>
 
 </body>
 </html>
