@@ -56,36 +56,37 @@
                   <p class="card-description">
                     Basic form elements
                   </p>
-                  <form action="../helpers/ajouterblog.php" method="post" class="forms-sample" enctype="multipart/form-data">
+                  <form action="../helpers/ajouterblog.php" method="post" class="forms-sample" enctype="multipart/form-data" name="addBlog">
                     <div class="form-group">
                       <label for="exampleInputName1">Name</label>
-                      <input type="text" class="form-control" name="name" id="exampleInputName1" placeholder="Name">
+                      <input type="text" class="form-control" name="name" id="nameBlog" placeholder="Name" >
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail3">Categorie</label> <!-- zid categorie -->
-                      <input type="text" class="form-control"  name="categorie" id="exampleInputEmail3" placeholder="Categorie">
+                      <input type="text" class="form-control"  name="categorie" id="categorieBlog" placeholder="Categorie" >
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword4">Editeur</label>
-                      <input type="text" class="form-control"  name="editeur" id="exampleInputPassword4" placeholder="Editeur">
+                      <input type="text" class="form-control"  name="editeur" id="editeurBlog" placeholder="Editeur">
                     </div>
                     <div class="form-group">
                       <label for="exampleTextarea1">Contenu</label>
-                      <textarea class="form-control"  name="contenu" id="exampleTextarea1" rows="4"></textarea>
+                      <textarea class="form-control"  name="contenu" id="contenuBlog" rows="4" ></textarea>
                     </div>
                     <div class="form-group">
                       <label>Image</label>
-                      <input type="file" name="image" id="image" class="file-upload-default">
+                      <input type="file" name="image" id="image" class="file-upload-default"  >
                       <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image" >
                         <span class="input-group-append">
                           <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                         </span>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button type="submit" class="btn btn-primary me-2" onclick="Verif()">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
+                  <p style="color: red;" id="erreur"></p>
                 </div>
               </div>
             </div>
@@ -125,6 +126,10 @@
   <script src="../assets/js/typeahead.js"></script>
   <script src="../assets/js/select2.js"></script>
   <!-- End custom js for this page-->
+
+  <!-- controle saisie -->
+  <script src="../assets/js/app.js"></script>
+  <!-- end controle saisie -->
 </body>
 
 </html>
