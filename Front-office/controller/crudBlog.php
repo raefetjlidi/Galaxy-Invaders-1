@@ -43,6 +43,12 @@ function recupererCategorie($categorie,$con)
    return $reponse;
 }
 
+function resultatRecherche($nom ,$con)
+{
+   $sql = "SELECT * FROM blogs where nom_blog like'$nom%' ORDER BY date_blog DESC";
+$reponse = $con->query($sql);
+return $reponse;
+}
 
 
 
